@@ -147,7 +147,16 @@ async def account_login(bot: Client, m: Message):
     except Exception:
             res = "UN"
     
-    
+
+
+   
+    await input3.delete(True)
+    highlighter  = f"️ ⁪⁬⁮⁮⁮"
+    if raw_text3 == 'Robin':
+        MR = highlighter 
+    else:
+        MR = raw_text3
+
 
 
     await editable.edit("🌄 Now send the Thumb url\nEg » \n\n Or if don't want thumbnail send = no")
