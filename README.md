@@ -28,7 +28,7 @@
 
 ## Deploy To Render                  
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://render.com/deploy?repo=https://github.com/SudoR2spr/text-leech-bot/tree/heroku)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://render.com/deploy?repo=https://github.com/AnkitShakya95/text-leech-bot2/tree/heroku)
 
 ## vars.py [vars.py](https://github.com/SudoR2spr/txt-leech-bot/blob/main/modules/vars.py)
 
