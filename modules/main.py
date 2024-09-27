@@ -149,7 +149,9 @@ async def account_login(bot: Client, m: Message):
     
 
 
-   await editable.edit("✏️ 𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 > ")
+
+
+    await editable.edit("✏️ 𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 > ")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
@@ -158,7 +160,6 @@ async def account_login(bot: Client, m: Message):
         MR = highlighter 
     else:
         MR = raw_text3
-
 
 
     await editable.edit("🌄 Now send the Thumb url\nEg » \n\n Or if don't want thumbnail send = no")
