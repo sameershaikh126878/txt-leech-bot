@@ -189,7 +189,7 @@ async def account_login(bot: Client, m: Message):
                         url = re.search(r"(https://.*?playlist.m3u8.*?)\"", text).group(1)
 
             elif 'videos.classplusapp' in url:
-             url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgzMTkwMDIsIm9yZ0lkIjoxNjgxLCJ0eXBlIjoxLCJtb2JpbGUiOiI5MTkzNTEyODk1NjciLCJuYW1lIjoiSnlvdGkgTWVlbmEiLCJlbWFpbCI6Imp5b3RpbWVlbmE3NzQyQGdtYWlsLmNvbSIsImlzSW50ZXJuYXRpb25hbCI6MCwiZGVmYXVsdExhbmd1YWdlIjoiRU4iLCJjb3VudHJ5Q29kZSI6IklOIiwiY291bnRyeUlTTyI6IjkxIiwidGltZXpvbmUiOiJHTVQrNTozMCIsImlzRGl5IjpmYWxzZSwib3JnQ29kZSI6InJpb2MiLCJpc0RpeVN1YmFkbWluIjowLCJmaW5nZXJwcmludElkIjoiMmIzMDFjMzRiODkxZmJhMmE1Y2YyYjYyNDA3NjVhNDIiLCJpYXQiOjE3Mjc1ODE3NjEsImV4cCI6MTcyODE4NjU2MX0.xqWD8JlstcI6IM9wEkqJkFZsA_Cmea9KXcip4Vbf05rXLtYIvctHHfg683LXZDOA'}).json()['url']
+             url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6MTI0NTk1MjUzLCJvcmdJZCI6NzExNTM2LCJ0eXBlIjoxLCJtb2JpbGUiOiI5MTg5NTc5ODEyNjciLCJuYW1lIjoiTmFpdGlrIFRpd2FyaSIsImVtYWlsIjpudWxsLCJpc0ludGVybmF0aW9uYWwiOjAsImRlZmF1bHRMYW5ndWFnZSI6IkVOIiwiY291bnRyeUNvZGUiOiJJTiIsImNvdW50cnlJU08iOiI5MSIsInRpbWV6b25lIjoiR01UKzU6MzAiLCJpc0RpeSI6dHJ1ZSwib3JnQ29kZSI6ImpndWtzZSIsImlzRGl5U3ViYWRtaW4iOjAsImZpbmdlcnByaW50SWQiOiIyYjMwMWMzNGI4OTFmYmEyYTVjZjJiNjI0MDc2NWE0MiIsImlhdCI6MTcyODE0MTMxNiwiZXhwIjoxNzI4NzQ2MTE2fQ.d4OcYlZe0rehHL6yW24EHA8InIL3IyR42QMAQg1P8yUL8-3u44bNvKp5CTq3eVYv'}).json()['url']
 
             elif '/master.mpd' in url:
              id =  url.split("/")[-2]
