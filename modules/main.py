@@ -193,13 +193,14 @@ async def account_login(bot: Client, m: Message):
 
             elif '/master.mpd' in url:
              id =  url.split("/")[-2]
-             url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
-          
-            elif 'videos.pwlive' in url:
-             url = requests.get(f'https://pwapi-aaebd595f347.herokuapp.com/pw-dl/uploader/video/jw-singed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzAyNDg0MjAuNjMzLCJkYXRhIjp7Il9pZCI6IjY0MjM5M2E5NzQwODQ5MDAxOGFhM2I4ZCIsInVzZXJuYW1lIjoiODQyMzQyNTk2MCIsImZpcnN0TmFtZSI6ImFiaGkiLCJsYXN0TmFtZSI6IiIsIm9yZ2FuaXphdGlvbiI6eyJfaWQiOiI1ZWIzOTNlZTk1ZmFiNzQ2OGE3OWQxODkiLCJ3ZWJzaXRlIjoicGh5c2ljc3dhbGxhaC5jb20iLCJuYW1lIjoiUGh5c2ljc3dhbGxhaCJ9LCJyb2xlcyI6WyI1YjI3YmQ5NjU4NDJmOTUwYTc3OGM2ZWYiXSwiY291bnRyeUdyb3VwIjoiSU4iLCJ0eXBlIjoiVVNFUiJ9LCJpYXQiOjE3Mjk2NDM2MjB9.HRG4rEP1hW4gW59tAmqClxLamdWP1ktyZOKsC746q-E'}).josn()['url']
-
+             url =  "https://d1d34p8vz63oiq.cloudfront.net/" + id + "/master.m3u8"
+                
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             name = f'{str(count).zfill(3)}) {name1[:60]}'
+            
+            elif 'pw.live' in url:
+             url = requests.get(f'https://pwapi-aaebd595f347.herokuapp.com/pw-dl/uploader/video/jw-singed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzAyNDg0MjAuNjMzLCJkYXRhIjp7Il9pZCI6IjY0MjM5M2E5NzQwODQ5MDAxOGFhM2I4ZCIsInVzZXJuYW1lIjoiODQyMzQyNTk2MCIsImZpcnN0TmFtZSI6ImFiaGkiLCJsYXN0TmFtZSI6IiIsIm9yZ2FuaXphdGlvbiI6eyJfaWQiOiI1ZWIzOTNlZTk1ZmFiNzQ2OGE3OWQxODkiLCJ3ZWJzaXRlIjoicGh5c2ljc3dhbGxhaC5jb20iLCJuYW1lIjoiUGh5c2ljc3dhbGxhaCJ9LCJyb2xlcyI6WyI1YjI3YmQ5NjU4NDJmOTUwYTc3OGM2ZWYiXSwiY291bnRyeUdyb3VwIjoiSU4iLCJ0eXBlIjoiVVNFUiJ9LCJpYXQiOjE3Mjk2NDM2MjB9.HRG4rEP1hW4gW59tAmqClxLamdWP1ktyZOKsC746q-E'}).josn()['url']
+     
 
             if "youtu.be" in url:
                 ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
