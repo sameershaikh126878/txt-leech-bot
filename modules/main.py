@@ -192,8 +192,6 @@ async def account_login(bot: Client, m: Message):
              url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6MTI0NTk1MjUzLCJvcmdJZCI6NzExNTM2LCJ0eXBlIjoxLCJtb2JpbGUiOiI5MTg5NTc5ODEyNjciLCJuYW1lIjoiTmFpdGlrIFRpd2FyaSIsImVtYWlsIjpudWxsLCJpc0ludGVybmF0aW9uYWwiOjAsImRlZmF1bHRMYW5ndWFnZSI6IkVOIiwiY291bnRyeUNvZGUiOiJJTiIsImNvdW50cnlJU08iOiI5MSIsInRpbWV6b25lIjoiR01UKzU6MzAiLCJpc0RpeSI6dHJ1ZSwib3JnQ29kZSI6ImpndWtzZSIsImlzRGl5U3ViYWRtaW4iOjAsImZpbmdlcnByaW50SWQiOiIyYjMwMWMzNGI4OTFmYmEyYTVjZjJiNjI0MDc2NWE0MiIsImlhdCI6MTcyODE0MTMxNiwiZXhwIjoxNzI4NzQ2MTE2fQ.d4OcYlZe0rehHL6yW24EHA8InIL3IyR42QMAQg1P8yUL8-3u44bNvKp5CTq3eVYv'}).json()['url']
 
          elif 'videos.pwlive' in url:
-            id = url.split("/")[-2]
-            url = "https://d1d34p8vz63oiq.cloudfront.net/" + id + "/master.m3u8"
              url = requests.get(f'https://pwapi-aaebd595f347.herokuapp.com/pw-dl/uploader/video/jw-singed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzAyNDg0MjAuNjMzLCJkYXRhIjp7Il9pZCI6IjY0MjM5M2E5NzQwODQ5MDAxOGFhM2I4ZCIsInVzZXJuYW1lIjoiODQyMzQyNTk2MCIsImZpcnN0TmFtZSI6ImFiaGkiLCJsYXN0TmFtZSI6IiIsIm9yZ2FuaXphdGlvbiI6eyJfaWQiOiI1ZWIzOTNlZTk1ZmFiNzQ2OGE3OWQxODkiLCJ3ZWJzaXRlIjoicGh5c2ljc3dhbGxhaC5jb20iLCJuYW1lIjoiUGh5c2ljc3dhbGxhaCJ9LCJyb2xlcyI6WyI1YjI3YmQ5NjU4NDJmOTUwYTc3OGM2ZWYiXSwiY291bnRyeUdyb3VwIjoiSU4iLCJ0eXBlIjoiVVNFUiJ9LCJpYXQiOjE3Mjk2NDM2MjB9.HRG4rEP1hW4gW59tAmqClxLamdWP1ktyZOKsC746q-E'}).josn()['url']
         
             elif '/master.mpd' in url:
