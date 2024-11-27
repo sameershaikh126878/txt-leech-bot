@@ -236,11 +236,12 @@ async def txt_handler(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    prog = await m.reply_text(f"**DOWNLOADING 📥 :-**\n\n**Video Name ➢** {name}\n**Quality ➢** {raw_text2}\n\n** 𝐓𝐡𝐢𝐬 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ➤ 𝐀𝐍𝐊𝐈𝐓 𝐒𝐇𝐀𝐊𝐘𝐀™**🇮🇳")
+                    Show = await m.reply_text(f"**DOWNLOADING 📥 :-**\n\n**Video Name ➢** {name}\n**Quality ➢** {raw_text2}\n\n** 𝐓𝐡𝐢𝐬 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ➤ 𝐀𝐍𝐊𝐈𝐓 𝐒𝐇𝐀𝐊𝐘𝐀™**🇮🇳")
+                    prog = await m.reply_text(Show)
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
-                    await helper.send_vid(bot, m, cc, filename, thumb, name)
+                    await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
                     count += 1
 
             except Exception as e:
