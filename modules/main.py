@@ -68,42 +68,56 @@ async def main():
     except (KeyboardInterrupt, SystemExit):
         await stop_bot()
     
+@bot.on_message(filters.command(["start"]))
+async def account_login(bot: Client, m: Message):
+    editable = await m.reply_text(
+       f"𝐇𝐞𝐥𝐥𝐨 ❤️\n\n◆〓◆ ❖ 𝐖𝐃 𝐙𝐎𝐍𝐄 ❖ ™ ◆〓◆\n\n❈ I Am A Bot For Download Links From Your **.TXT** File And Then Upload That File Om Telegram So Basically If You Want To Use Me First Send Me ⟰ /upload Command And Then Follow Few Steps..", reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("✜ 𝐉𝐨𝐢𝐧 𝐔𝐩𝐃𝐚𝐭𝐞 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 ✜" ,url=f"https://t.me/Opleech_WD") ],
+                    [
+                    InlineKeyboardButton("✜ 𝗔𝘀𝗵𝘂𝘁𝗼𝘀𝗵𝗚𝗼𝘀𝘄𝗮𝗺𝗶𝟮𝟰 ✜" ,url="https://t.me/AshutoshGoswami24") ],
+                    [
+                    InlineKeyboardButton("🦋 𝐅𝐨𝐥𝐥𝐨𝐰 𝐌𝐞 🦋" ,url="https://t.me/Opleech_WD/13") ]                               
+            ]))
+
+
 @bot.on_message(filters.command("stop"))
 async def restart_handler(_, m):
-    await m.reply_text(" 𝐒𝐭𝐨𝐩𝐩𝐞𝐝🚦 ", True)
+    await m.reply_text("♦ 𝐒𝐭𝐨𝐩𝐩𝐞𝐭 ♦", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
 
-@bot.on_message(filters.command(["ankit","upload"]) )
-async def txt_handler(bot: Client, m: Message):
-    editable = await m.reply_text(f"**🔹Hi I am Poweful TXT Downloader📥 Bot.**\n🔹**Send me the TXT file and wait.**")
+@bot.on_message(filters.command(["upload"]))
+async def account_login(bot: Client, m: Message):
+    editable = await m.reply_text('𝐓𝐨 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐀 𝐓𝐱𝐭 𝐅𝐢𝐥𝐞 𝐒𝐞𝐧𝐝 𝐇𝐞𝐫𝐞 ⏍')
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
-    file_name, ext = os.path.splitext(os.path.basename(x))
-    credit = f"𝐀𝐍𝐊𝐈𝐓 𝐒𝐇𝐀𝐊𝐘𝐀™🇮🇳"
-    try:    
-        with open(x, "r") as f:
-            content = f.read()
-        content = content.split("\n")
-        links = []
-        for i in content:
-            links.append(i.split("://", 1))
-        os.remove(x)
+
+    path = f"./downloads/{m.chat.id}"
+
+    try:
+       with open(x, "r") as f:
+           content = f.read()
+       content = content.split("\n")
+       links = []
+       for i in content:
+           links.append(i.split("://", 1))
+       os.remove(x)
+            # print(len(links)
     except:
-        await m.reply_text("Invalid file input.")
-        os.remove(x)
-        return
+           await m.reply_text("∝ 𝐈𝐧𝐯𝐚𝐥𝐢𝐝 𝐟𝐢𝐥𝐞 𝐢𝐧𝐩𝐮𝐭.")
+           os.remove(x)
+           return
+    
    
-    await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
+    await editable.edit(f"∝ 𝐓𝐨𝐭𝐚𝐥 𝐋𝐢𝐧𝐤 𝐅𝐨𝐮𝐧𝐝 𝐀𝐫𝐞 🔗** **{len(links)}**\n\n𝐒𝐞𝐧𝐝 𝐅𝐫𝐨𝐦 𝐖𝐡𝐞𝐫𝐞 𝐘𝐨𝐮 𝐖𝐚𝐧𝐭 𝐓𝐨 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐈𝐧𝐢𝐭𝐚𝐥 𝐢𝐬 **1**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
     await input0.delete(True)
-    try:
-        arg = int(raw_text)
-    except:
-        arg = 1
+
     await editable.edit("**Enter Your Batch Name or send d for grabing from text filename.**")
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
@@ -112,8 +126,9 @@ async def txt_handler(bot: Client, m: Message):
         b_name = file_name
     else:
         b_name = raw_text0
+    
 
-    await editable.edit("**Enter resolution.\n Eg : 480 or 720**")
+    await editable.edit("∝ 𝐄𝐧𝐭𝐞𝐫 𝐄𝐞𝐬𝐨𝐥𝐮𝐭𝐢𝐨𝐧 🎬\n☞ 144,240,360,480,720,1080\nPlease Choose Quality")
     input2: Message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
     await input2.delete(True)
@@ -135,6 +150,8 @@ async def txt_handler(bot: Client, m: Message):
     except Exception:
             res = "UN"
     
+    
+
     await editable.edit("**Enter Your Name or send 'de' for use default.\n Eg : 𝐀𝐍𝐊𝐈𝐓 𝐒𝐇𝐀𝐊𝐘𝐀™👨🏻‍💻**")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
@@ -143,8 +160,8 @@ async def txt_handler(bot: Client, m: Message):
         CR = credit
     else:
         CR = raw_text3
-
-    await editable.edit("Now send the **Thumb url**\n**Eg :** `https://telegra.ph/file/0e6ab2464c68076c42c24.jpg`\n\nor Send `no`")
+   
+    await editable.edit("🌄 Now send the Thumb url\nEg » https://graph.org/file/419c60736fbac058c9e50.jpg\n\n Or if don't want thumbnail send = no")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
@@ -194,9 +211,10 @@ async def txt_handler(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
-            try:                              
-                cc = f'**[▶️] Vid_ID :** {str(count).zfill(3)}\n\n**Video Title :** {name1}(𝐀𝐍𝐊𝐈𝐓).mkv\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
-                cc1 = f'**[📑] Pdf_ID :** {str(count).zfill(3)}\n\n**File Title :** {name1}(𝐀𝐍𝐊𝐈𝐓).pdf\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
+            try:  
+                
+                cc = f'**[🎬] Vid_ID :** {str(count).zfill(3)}\n\n**Video Title :** {name1}({res}).mkv\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
+                cc1 = f'**[📑] Pdf_ID :** {str(count).zfill(3)}\n\n**File Title :** {name1}.pdf\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
@@ -236,9 +254,16 @@ async def txt_handler(bot: Client, m: Message):
                     f"⌘ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐈𝐧𝐭𝐞𝐫𝐮𝐩𝐭𝐞𝐝\n{str(e)}\n⌘ 𝐍𝐚𝐦𝐞 » {name}\n⌘ 𝐋𝐢𝐧𝐤 » `{url}`"
                 )
                 continue
+
     except Exception as e:
         await m.reply_text(e)
     await m.reply_text("✅ 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐃𝐨𝐧𝐞")
+
+print("""
+█░█░█ █▀█ █▀█ █▀▄ █▀▀ █▀█ ▄▀█ █▀▀ ▀█▀     ▄▀█ █▀ █░█ █░█ ▀█▀ █▀█ █▀ █░█   ░ █▀▀
+▀▄▀▄▀ █▄█ █▄█ █▄▀ █▄▄ █▀▄ █▀█ █▀░ ░█░     █▀█ ▄█ █▀█ █▄█ ░█░ █▄█ ▄█ █▀█   ▄ █▄█""")
+print("""✅ 𝐃𝐞𝐩𝐥𝐨𝐲 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 ✅""")
+print("""✅ 𝐁𝐨𝐭 𝐖𝐨𝐫𝐤𝐢𝐧𝐠 ✅""")
 
 bot.run()
 if __name__ == "__main__":
