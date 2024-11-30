@@ -70,7 +70,7 @@ async def main():
     
 @bot.on_message(filters.command("stop"))
 async def restart_handler(_, m):
-    await m.reply_text("♦ 𝐒𝐭𝐨𝐩𝐩𝐞𝐝 ♦", True)
+    await m.reply_text(" 𝐒𝐭𝐨𝐩𝐩𝐞𝐝🚦 ", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
@@ -223,7 +223,7 @@ async def txt_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:                               
-                cc = f'**[🎬] Vid_ID :** {str(count).zfill(3)}\n\n**Video Title :** {name1}({res}).mkv\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
+                cc = f'**[▶️] Vid_ID :** {str(count).zfill(3)}\n\n**Video Title :** {name1}({res}).mkv\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
                 cc1 = f'**[📑] Pdf_ID :** {str(count).zfill(3)}\n\n**File Title :** {name1}.pdf\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
                 if "drive" in url:
                     try:
@@ -236,12 +236,13 @@ async def txt_handler(bot: Client, m: Message):
                         await m.reply_text(str(e))
                         time.sleep(e.x)
                         continue
+                
                 elif ".pdf" in url:
                     try:
                         cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
                         download_cmd = f"{cmd} -R 25 --fragment-retries 25"
                         os.system(download_cmd)
-                        await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
+                        copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1)
                         count += 1
                         os.remove(f'{name}.pdf')
                     except FloodWait as e:
@@ -249,80 +250,21 @@ async def txt_handler(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    Show = await m.reply_text(f"**DOWNLOADING 📥 :-**\n\n**Video Name ➢** {name}\n**Quality ➢** {raw_text2}\n\n** 𝐓𝐡𝐢𝐬 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ➤ 𝐀𝐍𝐊𝐈𝐓 𝐒𝐇𝐀𝐊𝐘𝐀™**🇮🇳")
+                    Show = f"❊⟱ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 ⟱❊ »\n\n📝 𝐍𝐚𝐦𝐞 » `{name}\n⌨ 𝐐𝐮𝐥𝐢𝐭𝐲 » {raw_text2}`\n\n** 𝐓𝐡𝐢𝐬 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ➤ 𝐀𝐍𝐊𝐈𝐓 𝐒𝐇𝐀𝐊𝐘𝐀™**🇮🇳")
                     prog = await m.reply_text(Show)
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
                     await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
                     count += 1
+                    time.sleep(1)
 
             except Exception as e:
-                await m.reply_text(f"**This #Failed File is not Counted**\n**Name ➢** `{name}`\n**Link ➢** `{url}`\n\n ** fail reason ➢** {e}")
-                count += 1
-                continue
-
-    except Exception as e:
-        await m.reply_text(e)
-    await m.reply_text("**Done✅**")
-@bot.on_message(filters.command(["visionpdf"]) )
-async def vision_pdf(bot: Client, m: Message):
-    editable = await m.reply_text("**Hello Dear,** I am Text File Downloader📥 Bot.\nI can download **PDFs of vision** from text file one by one.\n\n**Developer: @batmanhcbot👨🏻‍💻** \n**Language:** Python\n**Framework:** 🔥Pyrogram\n\nNow Send Your **TXT File:-**\n")
-    input: Message = await bot.listen(editable.chat.id)
-    x = await input.download()
-    await input.delete(True)
-
-    path = f"./downloads/{m.chat.id}"
-
-    try:
-            with open(x, "r") as f:
-                content = f.read()
-            content = content.split("\n")
-
-            links = []
-            for i in content:
-                links.append(i.split(":", 1))
-            os.remove(x)
-    except:
-            await m.reply_text("Invalid file input.☹️")
-            os.remove(x)
-            return
-            
-    editable = await m.reply_text(f"Total links found are {len(links)}\n\nSend From where you want to download,\n\nInitial is 1")
-    input1: Message = await bot.listen(editable.chat.id)
-    count = input1.text
-    await input1.delete(True)
-    count = int(count)      	
-    	            
-    await m.reply_text("**Enter Your Batch Name**")
-    inputy: Message = await bot.listen(editable.chat.id)
-    await inputy.delete(True)
-    raw_texty = inputy.text
-
-    await m.reply_text("**Enter Cookies**")
-    input2: Message = await bot.listen(editable.chat.id)
-    cookie = input2.text
-    await input2.delete(True)
-    cookies = cookies = {'PHPSESSID': f'{cookie}'}
-        
-    try:
-        for i in range(count, len(links)):
-
-            url = links[i][1]
-            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()[:57]
-            name = f'{str(count).zfill(3)}) {name1}'
-            cc = f'{str(count).zfill(3)}. {name1}.pdf\n\n**Batch :** {raw_texty}\n\n'
-            ka = await helper.vision(url, name, cookies)
-            await m.reply_document(ka, caption=cc)
-            count += 1
-            os.remove(ka)
-            time.sleep(3)
-          
-    except Exception as e:
                 await m.reply_text(
                     f"⌘ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐈𝐧𝐭𝐞𝐫𝐮𝐩𝐭𝐞𝐝\n{str(e)}\n⌘ 𝐍𝐚𝐦𝐞 » {name}\n⌘ 𝐋𝐢𝐧𝐤 » `{url}`"
                 )
-                
+                continue
+    
     except Exception as e:
         await m.reply_text(e)
     await m.reply_text("✅ 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐃𝐨𝐧𝐞")
