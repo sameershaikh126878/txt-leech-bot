@@ -156,8 +156,6 @@ async def txt_handler(bot: Client, m: Message):
         thumb = "thumb.jpg"
     else:
         thumb == "no"
-        
-    else:
         count = int(raw_text)
         
     try:
