@@ -157,8 +157,6 @@ async def txt_handler(bot: Client, m: Message):
     else:
         thumb == "no"
         
-   if len(links) == 1:
-        count = 1
     else:
         count = int(raw_text)
         
@@ -227,8 +225,8 @@ async def txt_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:                               
-                cc = f'**[▶️] Vid_ID :** {str(count).zfill(3)}\n\n**Video Title :** {name1}(Ankit).mkv\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
-                cc1 = f'**[📑] Pdf_ID :** {str(count).zfill(3)}\n\n**File Title :** {name1}(Ankit).pdf\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
+                cc = f'**[▶️] Vid_ID :** {str(count).zfill(3)}\n\n**Video Title :** {name1}(𝐀𝐍𝐊𝐈𝐓).mkv\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
+                cc1 = f'**[📑] Pdf_ID :** {str(count).zfill(3)}\n\n**File Title :** {name1}(𝐀𝐍𝐊𝐈𝐓).pdf\n\n**Batch Name :** {b_name}\n\n**Extracted By ➤ {CR}**'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
