@@ -78,7 +78,7 @@ async def account_login(bot: Client, m: Message):
                     [
                     InlineKeyboardButton("✜ 𝗔𝗻𝗸𝗶𝘁𝗦𝗵𝗮𝗸𝘆𝗮 ✜" ,url="https://t.me/ANKIT_SHAKYA73") ],
                     [
-                    InlineKeyboardButton("🦋 𝐅𝐨𝐥𝐥𝐨𝐰 𝐌𝐞 🦋" ,url="https://t.me/ANKIT_SHAKYA_OFFICIAL) ]                               
+                    InlineKeyboardButton("🦋 𝐅𝐨𝐥𝐥𝐨𝐰 𝐌𝐞 🦋" ,url="https://t.me/ANKIT_SHAKYA_OFFICIAL") ]                               
             ]))
 
 
