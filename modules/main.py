@@ -208,6 +208,8 @@ async def account_login(bot: Client, m: Message):
                     'webengage-luid': '00000187-6fe4-5d41-a530-26186858be4c',
                     'accept-encoding': 'gzip'
                 }
+
+               url = response.json()['url']
                res = requests.get("https://api.classplusapp.com/cams/uploader/video/jw-signed-url", params=params, headers=headers).json()
                print(res)
                 
