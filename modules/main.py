@@ -192,7 +192,7 @@ async def account_login(bot: Client, m: Message):
                         url = re.search(r"(https://.*?playlist.m3u8.*?)\"", text).group(1)
 
             elif "media-cdn-alisg.classplusapp.com" or "tencdn.classplusapp" or "media-cdn.classplusapp" or "media-cdn-a.classplusapp" in url:
-            	headers = {
+             headers = {
                     'host': 'api.classplusapp.com',
                     'x-access-token': 'eyJjb3Vyc2VJZCI6IjQ1NjY4NyIsInR1dG9ySWQiOm51bGwsIm9yZ0lkIjo0ODA2MTksImNhdGVnb3J5SWQiOm51bGx9',    
                     'accept-language': 'EN',
@@ -210,7 +210,7 @@ async def account_login(bot: Client, m: Message):
                 }
 
                url = response.json()['url']
-               res = requests.get("https://api.classplusapp.com/cams/uploader/video/jw-signed-url", params=params, headers=headers).json()
+               res = requests.get("https://api.classplusapp.com/cams/uploader/video/jw-signed-url",  headers=headers, params=params).json()
                print(res)
                 
                
