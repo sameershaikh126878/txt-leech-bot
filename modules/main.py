@@ -210,7 +210,7 @@ async def account_login(bot: Client, m: Message):
                }
                
                params = (('url', f'{url}'),)
-               response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params).json()
+               response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params)
                url = response.json()['url']
                 
                
