@@ -208,9 +208,10 @@ async def account_login(bot: Client, m: Message):
                     'webengage-luid': '00000187-6fe4-5d41-a530-26186858be4c',
                     'accept-encoding': 'gzip'
                }
-               res = requests.get("https://api.classplusapp.com/cams/uploader/video/jw-signed-url",  headers=headers, params=params).json()
+               
+               params = (('url', f'{url}'),)
+               response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params).json()
                url = response.json()['url']
-               print(res)
                 
                
             elif '/master.mpd' in url:
