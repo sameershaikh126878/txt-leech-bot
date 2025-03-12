@@ -209,8 +209,9 @@ async def account_login(bot: Client, m: Message):
                     'accept-encoding': 'gzip'
                 }
 
-               url = response.json()['url']
+               params = (('url', f'{url}'),)
                res = requests.get("https://api.classplusapp.com/cams/uploader/video/jw-signed-url",  headers=headers, params=params).json()
+               url = response.json()['url']
                print(res)
                 
                
