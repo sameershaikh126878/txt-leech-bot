@@ -160,6 +160,15 @@ async def account_login(bot: Client, m: Message):
         CR = credit
     else:
         CR = raw_text3
+
+    await editable.edit("**Enter Your PW Token For 𝐌𝐏𝐃 𝐔𝐑𝐋  or send 'unknown' for use default**")
+    input4: Message = await bot.listen(editable.chat.id)
+    raw_text4 = input4.text
+    await input4.delete(True)
+    if raw_text4 == 'unknown':
+        MR = token
+    else:
+        MR = raw_text4
    
     await editable.edit("🌄 Now send the Thumb url\nEg » https://graph.org/file/419c60736fbac058c9e5.jpg\n\n Or if don't want thumbnail send = no")
     input6 = message = await bot.listen(editable.chat.id)
@@ -213,10 +222,16 @@ async def account_login(bot: Client, m: Message):
              url = response.json()['url']
              print(response)   
                
-            elif '/master.mpd' in url:
-             id =  url.split("/")[-2]
-             url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
-
+            #elif '/master.mpd' in url:
+             #id =  url.split("/")[-2]
+             #url = f"https://player.muftukmall.site/?id={id}"
+            #elif '/master.mpd' in url:
+             #id =  url.split("/")[-2]
+             #url = f"https://anonymouspwplayer-b99f57957198.herokuapp.com/pw?url={url}?token={raw_text4}"
+            #url = f"https://madxapi-d0cbf6ac738c.herokuapp.com/{id}/master.m3u8?token={raw_text4}"
+            elif "d1d34p8vz63oiq" in url or "sec1.pw.live" in url:
+             url = f"https://pwplayer-38c1ae95b681.herokuapp.com/pw?url={url}&token={raw_text4}"
+                
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             name = f'{str(count).zfill(3)}) {name1[:60]}'
 
